@@ -3,24 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Neha Bhatnagar — AI-first Product &amp; CX Leader</title>
-<meta name="description" content="AI-first Product &amp; CX Leader. Currently shipping retail intelligence at Indriya — Aditya Birla Jewellery. Mumbai · Open to relocation worldwide." />
-<meta name="author" content="Neha Bhatnagar" />
-<meta name="theme-color" content="#FFFFFF" />
-
-<!-- Open Graph (LinkedIn, Facebook, WhatsApp previews) -->
-<meta property="og:type" content="profile" />
-<meta property="og:title" content="Neha Bhatnagar — AI-first Product &amp; CX Leader" />
-<meta property="og:description" content="Six-plus years building consumer products for 10M+ users. Currently shipping retail intelligence at Indriya — Aditya Birla Jewellery." />
-<meta property="og:locale" content="en_US" />
-
-<!-- Twitter / X -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Neha Bhatnagar — AI-first Product &amp; CX Leader" />
-<meta name="twitter:description" content="Six-plus years building consumer products for 10M+ users. Currently shipping retail intelligence at Indriya — Aditya Birla Jewellery." />
-
-<!-- Favicon (gold dot, inline SVG — no extra file needed) -->
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23000000'/%3E%3Ccircle cx='50' cy='50' r='14' fill='%23D4A056'/%3E%3C/svg%3E" />
+<title>Neha Bhatnagar.</title>
+<meta name="description" content="AI-first Product &amp; CX Leader at Indriya (Aditya Birla Jewellery). Mumbai. Open to relocation worldwide." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -80,13 +64,14 @@
   /* ---------- TOP NAV (always small, very Apple) ---------- */
   .topnav{
     position: fixed; top: 0; left: 0; right: 0;
-    height: 48px;
-    background: rgba(255,255,255,0.72);
+    height: 52px;
+    background: rgba(255,255,255,0.88);
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
-    border-bottom: 1px solid var(--rule-soft);
+    border-bottom: 1px solid var(--rule);
+    box-shadow: 0 1px 0 rgba(0,0,0,0.02), 0 4px 24px rgba(0,0,0,0.04);
     z-index: 100;
-    transition: background .3s ease, color .3s ease, border-color .3s ease;
+    transition: background .3s ease, color .3s ease, border-color .3s ease, box-shadow .3s ease;
   }
   .topnav-inner{
     max-width: 1200px; margin: 0 auto;
@@ -98,7 +83,32 @@
     letter-spacing: -0.005em;
     color: var(--text);
   }
-  .topnav-inner .name{ font-weight: 500 }
+  .topnav-inner .name{
+    font-weight: 500;
+    text-decoration: none;
+    color: inherit;
+    display: inline-flex;
+    align-items: center;
+  }
+  .topnav-inner .name .monogram{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--brand-indriya) 0%, #8B4513 100%);
+    color: #FFF;
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    transition: transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s ease;
+  }
+  .topnav-inner .name:hover .monogram{
+    transform: scale(1.06);
+    box-shadow: 0 4px 12px rgba(183,110,61,0.35);
+  }
   .topnav-inner nav{
     display: flex; gap: 28px;
     opacity: 0;
@@ -552,20 +562,27 @@
   .chapter-divider h2.thesis{
     font-family: 'Geist', sans-serif;
     font-weight: 600;
-    font-size: clamp(28px, 3.8vw, 44px);
-    line-height: 1.15;
-    letter-spacing: -0.022em;
+    font-size: clamp(32px, 4.2vw, 52px);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
     color: var(--text);
     max-width: 22ch;
-    margin: 0 auto 18px;
+    margin: 0 auto 28px;
   }
-  .chapter-divider h2.thesis .accent{ color: var(--text-mute) }
+  /* default accent (will be overridden per chapter brand) */
+  .chapter-divider h2.thesis .accent{ color: var(--text-mute); font-weight: 500; }
+
+  /* per-chapter accent colors so the thesis line breathes its brand */
+  .chapter-divider.brand-indriya h2.thesis .accent{ color: var(--brand-indriya) }
+  .chapter-divider.brand-nestle  h2.thesis .accent{ color: var(--brand-nestle) }
+  .chapter-divider.brand-sporjo  h2.thesis .accent{ color: var(--brand-sporjo) }
+
   .chapter-divider .summary{
     font-family: 'Geist Mono', monospace;
     font-size: 13px;
     letter-spacing: 0.02em;
     color: var(--text-mute);
-    margin-top: 36px;
+    margin-top: 44px;
   }
   .chapter-divider .summary span{ color: var(--text); font-weight: 500 }
   .chapter-divider .role-line{
@@ -671,19 +688,56 @@
   }
   .award-card{
     background: var(--bg);
+    border: 1px solid var(--rule-soft);
     border-radius: var(--radius);
     padding: 32px 28px;
-    transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease;
+    position: relative;
+    overflow: hidden;
+    transition: transform .35s cubic-bezier(.2,.8,.2,1), border-color .3s ease, background .3s ease;
+  }
+  /* gold accent band that grows from left on hover */
+  .award-card::before{
+    content: "";
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, var(--brand-indriya) 0%, #8B4513 100%);
+    transform: scaleY(0);
+    transform-origin: top center;
+    transition: transform .4s cubic-bezier(.2,.8,.2,1);
+  }
+  /* subtle gold glow ring on year badge */
+  .award-card::after{
+    content: "";
+    position: absolute;
+    top: 24px; right: 24px;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--brand-indriya);
+    opacity: 0;
+    transition: opacity .3s ease, transform .3s ease;
   }
   .award-card:hover{
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    transform: translateY(-2px);
+    border-color: rgba(183,110,61,0.35);
+    background: linear-gradient(180deg, #FFFBF5 0%, var(--bg) 100%);
+  }
+  .award-card:hover::before{
+    transform: scaleY(1);
+  }
+  .award-card:hover::after{
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  .award-card:hover .yr{
+    color: var(--brand-indriya);
   }
   .award-card .yr{
     font-family: 'Geist Mono', monospace;
     font-size: 12px;
     color: var(--link);
     margin-bottom: 14px;
+    transition: color .3s ease;
   }
   .award-card h4{
     font-size: 19px;
@@ -791,7 +845,22 @@
   /* ---------- NAVIGATOR (jump cards) ---------- */
   .navigator{
     padding: 100px 0;
-    background: var(--bg);
+    background: linear-gradient(180deg, #FAF8F5 0%, #F5F0EA 100%);
+    position: relative;
+  }
+  .navigator::before{
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(183,110,61,0.18) 50%, transparent 100%);
+  }
+  .navigator::after{
+    content: "";
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(183,110,61,0.18) 50%, transparent 100%);
   }
   .navigator .head{
     text-align: center;
@@ -816,7 +885,7 @@
     gap: 14px;
   }
   .nav-card{
-    background: var(--bg-tint);
+    background: #FFFFFF;
     border-radius: var(--radius);
     padding: 28px 24px 24px;
     transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease, background .25s ease;
@@ -827,6 +896,7 @@
     display: flex;
     flex-direction: column;
     min-height: 180px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
   }
   .nav-card::before{
     content: "";
@@ -971,12 +1041,19 @@
     border-radius: var(--radius);
     padding: 36px 28px;
     backdrop-filter: blur(10px);
-    transition: background .3s ease, border-color .3s ease, transform .35s cubic-bezier(.2,.8,.2,1);
+    transition: background .35s cubic-bezier(.2,.8,.2,1), border-color .35s ease, transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease;
   }
   .ai-card:hover{
-    background: rgba(110,72,240,0.08);
-    border-color: rgba(180,155,255,0.3);
-    transform: translateY(-3px);
+    background: rgba(110,72,240,0.14);
+    border-color: rgba(180,155,255,0.45);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(110,72,240,0.18);
+  }
+  .ai-card:hover .tool-name{
+    color: #C9B6FF;
+  }
+  .ai-card:hover .tool-cat{
+    color: #DCC9FF;
   }
   .ai-card .tool-name{
     font-family: 'Geist', sans-serif;
@@ -1160,11 +1237,12 @@
     text-transform: uppercase;
   }
   .clock .time{
-    font-family: 'Geist', sans-serif;
+    font-family: 'Geist Mono', monospace;
     font-weight: 500;
     font-size: 22px;
     letter-spacing: -0.011em;
     color: var(--text);
+    font-variant-numeric: tabular-nums;
   }
   .clock .zone{
     font-family: 'Geist Mono', monospace;
@@ -1255,7 +1333,9 @@
 <!-- ============== TOP NAV ============== -->
 <header class="topnav" id="topnav">
   <div class="topnav-inner">
-    <a href="#top" class="name">Neha Bhatnagar</a>
+    <a href="#top" class="name" aria-label="Neha Bhatnagar, home">
+      <span class="monogram">NB</span>
+    </a>
     <nav id="subnav">
       <a href="#impact" data-target="impact">Impact</a>
       <a href="#ai" data-target="ai">AI</a>
@@ -1275,7 +1355,7 @@
     <div class="eyebrow reveal">Hello.</div>
     <h1 class="reveal reveal-d1">AI-first Product &amp; CX Leader.</h1>
     <p class="subhead reveal reveal-d2">
-      Building human-centred retail intelligence at Indriya — Aditya Birla Jewellery.<br/>
+      Building human-centred retail intelligence at Indriya (Aditya Birla Jewellery).<br/>
       Where AI, design, and physical retail meet.
     </p>
     <div class="cta-row reveal reveal-d3">
@@ -1305,7 +1385,7 @@
       <a href="#ai" class="nav-card c-ai reveal reveal-d1">
         <div class="nav-num">02</div>
         <div class="nav-title">AI-First Practice</div>
-        <div class="nav-desc">How I use Claude, NotebookLM, ServiceNow, and more — every day.</div>
+        <div class="nav-desc">How I use Claude, NotebookLM, ServiceNow and more in daily product work.</div>
         <div class="nav-arrow">›</div>
       </a>
       <a href="#ch-indriya" class="nav-card c-indriya reveal reveal-d2">
@@ -1354,7 +1434,7 @@
     <div class="heading-block">
       <div class="kicker reveal">Signature Impact</div>
       <h2 class="reveal reveal-d1">Numbers that<br/>moved the floor.</h2>
-      <p class="sub reveal reveal-d2">From the launch of Indriya — across 80 luxury jewellery stores and the products that run them.</p>
+      <p class="sub reveal reveal-d2">From the launch of Indriya, across 80 luxury jewellery stores and the products that run them.</p>
     </div>
 
     <div class="specs">
@@ -1386,7 +1466,7 @@
       <span class="accent">Instrument it ruthlessly. Then scale with the data.</span>
     </h2>
     <p class="body reveal reveal-d1">
-      A new-age customer experience leader, building at the intersection of AI, design, and physical retail. Two-time Aditya Birla Group innovation awardee. Six-plus years shipping consumer products to 10M+ users — with AI now woven into every step of the workflow.
+      A new-age customer experience leader, building at the intersection of AI, design, and physical retail. Two-time Aditya Birla Group innovation awardee. Six-plus years shipping consumer products to 10M+ users, with AI now woven into every step of the workflow.
     </p>
   </div>
 </section>
@@ -1401,7 +1481,7 @@
         <span class="accent">Building with it, daily.</span>
       </h2>
       <p class="sub reveal reveal-d2">
-        AI isn't a separate workstream — it's how I research, design, prototype, train, and ship. Here's the actual stack, and what each tool does in my workflow.
+        AI isn't a separate workstream, it's how I research, design, prototype, train, and ship. Here's the actual stack, and what each tool does in my workflow.
       </p>
     </div>
 
@@ -1409,45 +1489,85 @@
       <div class="ai-card reveal">
         <div class="tool-name">Claude</div>
         <div class="tool-cat">Research · Analysis · Writing</div>
-        <div class="tool-desc">Daily thinking partner — for deep research on customer behaviour, competitive analysis, and synthesising user interviews into product insight. Where I sharpen ideas before they become roadmaps.</div>
+        <div class="tool-desc">Daily thinking partner, for deep research on customer behaviour, competitive analysis, and synthesising user interviews into product insight. Where I sharpen ideas before they become roadmaps.</div>
         <div class="tool-tag">Daily driver</div>
       </div>
       <div class="ai-card reveal reveal-d1">
         <div class="tool-name">Claude (Design)</div>
         <div class="tool-cat">UI · Mobile &amp; Web Frames</div>
-        <div class="tool-desc">Used to generate mobile and web application frames — turning product specs into clickable design references in minutes, then handing off to design teams for refinement.</div>
+        <div class="tool-desc">Used to generate mobile and web application frames, turning product specs into clickable design references in minutes, then handing off to design teams for refinement.</div>
         <div class="tool-tag">Prototyping</div>
       </div>
       <div class="ai-card reveal reveal-d2">
         <div class="tool-name">NotebookLM</div>
         <div class="tool-cat">Knowledge · Training Content</div>
-        <div class="tool-desc">Built training videos and audio walk-throughs for the apps I've shipped at Indriya — turning product documentation into store-staff onboarding content that scales without trainers.</div>
+        <div class="tool-desc">Built training videos and audio walk-throughs for the apps I've shipped at Indriya, turning product documentation into store-staff onboarding content that scales without trainers.</div>
         <div class="tool-tag">Enablement</div>
       </div>
       <div class="ai-card reveal">
         <div class="tool-name">ServiceNow Studio</div>
         <div class="tool-cat">Low-code AI App Build</div>
-        <div class="tool-desc">Built and shipped an AI-powered app at the ServiceNow AI App Build Day — recognised by the ServiceNow team for the use case and execution. Hands-on, end-to-end.</div>
+        <div class="tool-desc">Built and shipped an AI-powered app at the ServiceNow AI App Build Day, recognised by the ServiceNow team for the use case and execution. Hands-on, end-to-end.</div>
         <div class="tool-tag">Recognised by ServiceNow</div>
       </div>
       <div class="ai-card reveal reveal-d1">
         <div class="tool-name">Gemini</div>
         <div class="tool-cat">Computer Vision · Image AI</div>
-        <div class="tool-desc">Deployed Gemini-based image analysis for the Indriya design team in partnership with Google — accelerating moodboards, design references, and competitive image research.</div>
+        <div class="tool-desc">Deployed Gemini-based image analysis for the Indriya design team in partnership with Google, accelerating moodboards, design references, and competitive image research.</div>
         <div class="tool-tag">Production at Indriya</div>
       </div>
       <div class="ai-card reveal reveal-d2">
         <div class="tool-name">Computer Vision (Production)</div>
         <div class="tool-cat">In-store AI Analytics</div>
-        <div class="tool-desc">Conceptualised and rolled out the live in-store video analytics platform at Indriya — running on showroom camera feeds at 97% accuracy, tracking footfall, demographics, and zone movement.</div>
+        <div class="tool-desc">Conceptualised and rolled out the live in-store video analytics platform at Indriya, running on showroom camera feeds at 97% accuracy, tracking footfall, demographics, and zone movement.</div>
         <div class="tool-tag">Shipped to 80 stores</div>
       </div>
     </div>
 
     <div class="ai-callout reveal">
       <div class="badge">The thesis</div>
-      <h3>The next generation of CX leaders won't manage AI projects — they'll think in AI.</h3>
+      <h3>The next generation of CX leaders will not manage AI projects. They will think in AI.</h3>
       <p>Roadmaps with AI woven into discovery, prototyping, training, and shipping. Not a separate "AI initiative" with its own steerco. Just the way work gets done.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== CAREER (now placed before chapters) ============== -->
+<section class="career" id="career">
+  <div class="container">
+    <div class="head">
+      <div class="kicker reveal">The journey, briefly</div>
+      <h2 class="reveal reveal-d1">Three roles, three chapters.<br/>Side by side.</h2>
+      <p class="sub reveal reveal-d2" style="font-size: 17px; line-height: 1.5; color: var(--text-mute); max-width: 660px; margin: 18px auto 0;">A quick overview of where I have been before the deeper dive that follows.</p>
+    </div>
+    <div class="roles">
+      <div class="role reveal">
+        <div class="when">Oct 2024 · Now</div>
+        <div>
+          <div class="wordmark indriya">Indriya</div>
+          <h4>Senior Manager, Digital Customer Experience</h4>
+          <div class="place">Aditya Birla Jewellery · Mumbai</div>
+          <p>Currently leading the digital CX and in-store technology charter for Aditya Birla's new luxury jewellery brand. Product strategy across Sparkle, billing transformation, AI-powered video analytics, the IGP gold investment platform, and enterprise AI adoption (NotebookLM, Gemini) for 80 stores. Drove digital adoption across 900+ jewellery consultants, cutting training time by 40%, support queries by 35%, and lifting tool engagement by 22% in three months.</p>
+        </div>
+      </div>
+      <div class="role reveal">
+        <div class="when">Jun 2022 · Sep 2024</div>
+        <div>
+          <div class="wordmark nestle">Nestl<span class="acc">é</span></div>
+          <h4>Business Analyst, Digital Transformation</h4>
+          <div class="place">South Asia · Gurgaon</div>
+          <p>Operated as Product Manager for flagship digital platforms across South Asia. Owned consumer apps, D2C commerce, and 1P data infrastructure. Shipped the AskNestle redesign, Nestlé Global's first vernacular AI translation, the Smart Data Hub, Buynow shoppable tech, and a retail audit SaaS that contributed to a Zero Observation NIA Audit.</p>
+        </div>
+      </div>
+      <div class="role reveal">
+        <div class="when">Mar 2020 · Jun 2022</div>
+        <div>
+          <div class="wordmark sporjo">sporjo</div>
+          <h4>Senior Associate, Brand · Marketing · Product</h4>
+          <div class="place">Sports-tech venture · Mumbai</div>
+          <p>Early stage sports-tech venture. Owned product ideation, growth, and strategic partnerships during the platform's zero to one phase. Conceived and prototyped 3 new products, drove a 4× lift in monthly organic leads, launched a Campus Ambassador Program across 75 colleges, and ran integrated campaigns with Kerala Blasters FC that delivered a 500% uplift in social engagement.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1459,7 +1579,7 @@
     <div class="meta reveal">
       <span>Chapter 01 of 03</span>
       <span class="pip indriya"></span>
-      <span>Oct 2024 — Now</span>
+      <span>Oct 2024 · Now</span>
     </div>
     <div class="mark indriya reveal reveal-d1">Indriya</div>
     <h2 class="thesis reveal reveal-d2">
@@ -1510,7 +1630,7 @@
       </div>
       <div class="item reveal reveal-d2">
         <h4>Endless Aisle.</h4>
-        <p>120K+ products with transparent breakdown of metal, stone and making charges — sales beyond the floor stock.</p>
+        <p>120K+ products with transparent breakdown of metal, stone and making charges, sales beyond the floor stock.</p>
       </div>
     </div>
   </div>
@@ -1522,7 +1642,7 @@
     <div class="head">
       <div class="kicker reveal">Billing Transformation</div>
       <h2 class="reveal reveal-d1">From 30 minutes<br/>to 15.</h2>
-      <p class="sub reveal reveal-d2">Closing a perception gap that the dashboard alone couldn't see — by fixing people, process and system at the same time.</p>
+      <p class="sub reveal reveal-d2">Closing a perception gap that the dashboard alone couldn't see, by fixing people, process and system at the same time.</p>
     </div>
 
     <div class="stat-row reveal">
@@ -1543,7 +1663,7 @@
     <div class="details">
       <div class="item reveal">
         <h4>Redesigned POS workflow.</h4>
-        <p>Cash, cards, UPI, gold exchange, schemes, loyalty redemption and gift cards — handled in a single streamlined flow.</p>
+        <p>Cash, cards, UPI, gold exchange, schemes, loyalty redemption and gift cards, handled in a single streamlined flow.</p>
       </div>
       <div class="item reveal reveal-d1">
         <h4>Digital bills with authentication.</h4>
@@ -1551,19 +1671,19 @@
       </div>
       <div class="item reveal reveal-d2">
         <h4>Billing Speed as a KPI.</h4>
-        <p>Shifted the metric from "system speed" to "customer-experienced speed" — with cashier training material to match.</p>
+        <p>Shifted the metric from "system speed" to "customer-experienced speed", with cashier training material to match.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============== IGP — INDRIYA GOLDEN PROGRAM ============== -->
+<!-- ============== IGP. INDRIYA GOLDEN PROGRAM ============== -->
 <section class="feature feature-tint" id="igp">
   <div class="container">
     <div class="head">
       <div class="kicker reveal">Indriya Golden Program · IGP</div>
       <h2 class="reveal reveal-d1">An investment platform<br/>for gold, end-to-end.</h2>
-      <p class="sub reveal reveal-d2">Ideated and managed the creation of a full-stack gold investment platform — from scheme calculator to eKYC to ERP-integrated passbook — designed to be onboarded by sales staff at BTL events or by customers themselves.</p>
+      <p class="sub reveal reveal-d2">Ideated and managed the creation of a full-stack gold investment platform, from scheme calculator to eKYC to ERP-integrated passbook, designed to be onboarded by sales staff at BTL events or by customers themselves.</p>
     </div>
 
     <div class="stat-row reveal">
@@ -1584,30 +1704,30 @@
     <div class="details">
       <div class="item reveal">
         <h4>Scheme calculator &amp; eKYC.</h4>
-        <p>Transparent scheme projections paired with a frictionless eKYC journey — letting a first-time investor go from interested to enrolled without paperwork.</p>
+        <p>Transparent scheme projections paired with a frictionless eKYC journey, letting a first-time investor go from interested to enrolled without paperwork.</p>
       </div>
       <div class="item reveal reveal-d1">
         <h4>ERP &amp; Pine Labs integration.</h4>
-        <p>Wired transactions back into ERP for clean reconciliation, with online payments via Pine Labs — closing the loop between platform, finance, and customer record.</p>
+        <p>Wired transactions back into ERP for clean reconciliation, with online payments via Pine Labs, closing the loop between platform, finance, and customer record.</p>
       </div>
       <div class="item reveal reveal-d2">
         <h4>Self-onboarding &amp; BTL flow.</h4>
-        <p>Dual onboarding — customers enrol themselves online, or sales staff onboard them during BTL activations — with a digital passbook tracking every contribution.</p>
+        <p>Dual onboarding, customers enrol themselves online, or sales staff onboard them during BTL activations, with a digital passbook tracking every contribution.</p>
       </div>
     </div>
 
     <div class="details" style="margin-top: 32px">
       <div class="item reveal">
         <h4>Reducing dormancy.</h4>
-        <p>25% of existing schemes were dormant. AutoPay activation directly secures payment timeliness — projected to recover $2M (₹17 Cr) in lapsed scheme revenue.</p>
+        <p>25% of existing schemes were dormant. AutoPay activation directly secures payment timeliness, projected to recover $2M (₹17 Cr) in lapsed scheme revenue.</p>
       </div>
       <div class="item reveal reveal-d1">
         <h4>Upsell on maturity.</h4>
-        <p>35% upsell projection on matured schemes — $2.7M (₹23 Cr) in projected revenue from customers continuing the relationship past their first scheme cycle.</p>
+        <p>35% upsell projection on matured schemes. $2.7M (₹23 Cr) in projected revenue from customers continuing the relationship past their first scheme cycle.</p>
       </div>
       <div class="item reveal reveal-d2">
         <h4>1-month ROI.</h4>
-        <p>Build cost recovered in a single month — making IGP one of the fastest-paying retail-tech features I've shipped.</p>
+        <p>Build cost recovered in a single month, making IGP one of the fastest-paying retail-tech features I've shipped.</p>
       </div>
     </div>
   </div>
@@ -1619,7 +1739,7 @@
     <div class="head">
       <div class="kicker reveal">In-Store AI Video Analytics</div>
       <h2 class="reveal reveal-d1">Footfall<br/>intelligence,<br/>at 97% accuracy.</h2>
-      <p class="sub reveal reveal-d2">Conceptualised and rolled out an AI-powered platform on live camera feeds — replacing gut-feel decisions with data the merchandising team can argue with.</p>
+      <p class="sub reveal reveal-d2">Conceptualised and rolled out an AI-powered platform on live camera feeds, replacing gut-feel decisions with data the merchandising team can argue with.</p>
     </div>
 
     <div class="stat-row reveal">
@@ -1640,11 +1760,11 @@
     <div class="details">
       <div class="item reveal">
         <h4>Footfall &amp; demographics.</h4>
-        <p>Total walk-ins, gender and age-band demographics, solo vs. group/family — captured continuously, quietly, at scale.</p>
+        <p>Total walk-ins, gender and age-band demographics, solo vs, group/family, captured continuously, quietly, at scale.</p>
       </div>
       <div class="item reveal reveal-d1">
         <h4>Zone-level movement.</h4>
-        <p>Surfaces conversion hotspots and under-performing store zones — informing merchandising and staffing decisions.</p>
+        <p>Surfaces conversion hotspots and under-performing store zones, informing merchandising and staffing decisions.</p>
       </div>
       <div class="item reveal reveal-d2">
         <h4>Enterprise AI mandate.</h4>
@@ -1661,7 +1781,7 @@
     <div class="meta reveal">
       <span>Chapter 02 of 03</span>
       <span class="pip nestle"></span>
-      <span>Jun 2022 — Sep 2024</span>
+      <span>Jun 2022 · Sep 2024</span>
     </div>
     <div class="mark nestle reveal reveal-d1" style="color: var(--brand-nestle)">Nestl<span style="font-weight:500">é</span></div>
     <h2 class="thesis reveal reveal-d2">
@@ -1683,7 +1803,7 @@
     <div class="head">
       <div class="kicker reveal">AskNestle</div>
       <h2 class="reveal reveal-d1">Ten screens<br/>down to four.</h2>
-      <p class="sub reveal reveal-d2">An award-winning Nestlé South Asia consumer platform reaching 10M+ users — redesigned, then translated, in real time.</p>
+      <p class="sub reveal reveal-d2">An award-winning Nestlé South Asia consumer platform reaching 10M+ users, redesigned, then translated, in real time.</p>
     </div>
 
     <div class="stat-row reveal">
@@ -1704,11 +1824,11 @@
     <div class="details">
       <div class="item reveal">
         <h4>Journey redesign.</h4>
-        <p>Reduced friction from child nutrition through to adult nutrition expertise — without losing depth.</p>
+        <p>Reduced friction from child nutrition through to adult nutrition expertise, without losing depth.</p>
       </div>
       <div class="item reveal reveal-d1">
         <h4>Vernacular AI, a first for Nestlé Global.</h4>
-        <p>Ideated and led the platform's first vernacular translation system — speaking to a multilingual country in its own languages.</p>
+        <p>Ideated and led the platform's first vernacular translation system, speaking to a multilingual country in its own languages.</p>
       </div>
       <div class="item reveal reveal-d2">
         <h4>Recognised internationally.</h4>
@@ -1724,7 +1844,7 @@
     <div class="head">
       <div class="kicker reveal">Smart Data Hub &amp; Buynow</div>
       <h2 class="reveal reveal-d1">First-party data,<br/>turned into commerce.</h2>
-      <p class="sub reveal reveal-d2">Built Nestlé South Asia's 1P data backbone — and the shoppable tech that turned it into $14M of measurable revenue.</p>
+      <p class="sub reveal reveal-d2">Built Nestlé South Asia's 1P data backbone, and the shoppable tech that turned it into $14M of measurable revenue.</p>
     </div>
 
     <div class="stat-row reveal">
@@ -1766,7 +1886,7 @@
     <div class="meta reveal">
       <span>Chapter 03 of 03</span>
       <span class="pip sporjo"></span>
-      <span>Mar 2020 — Jun 2022</span>
+      <span>Mar 2020 · Jun 2022</span>
     </div>
     <div class="mark sporjo reveal reveal-d1">sporjo</div>
     <h2 class="thesis reveal reveal-d2">
@@ -1788,7 +1908,7 @@
     <div class="head">
       <div class="kicker reveal">Brand · Partnerships · Growth</div>
       <h2 class="reveal reveal-d1">Built the marketing<br/>function from scratch.</h2>
-      <p class="sub reveal reveal-d2">Owned product ideation, growth, and strategic partnerships during the platform's zero-to-one phase — when there was no playbook, just a small team and a clear thesis about gaps in the sports ecosystem.</p>
+      <p class="sub reveal reveal-d2">Owned product ideation, growth, and strategic partnerships during the platform's zero-to-one phase, when there was no playbook, just a small team and a clear thesis about gaps in the sports ecosystem.</p>
     </div>
 
     <div class="stat-row reveal">
@@ -1809,54 +1929,15 @@
     <div class="details">
       <div class="item reveal">
         <h4>Three products, prototyped.</h4>
-        <p>Conceived, researched and prototyped three new products addressing demand-supply gaps in the sports ecosystem — validated with UAT, data analytics and market research before build.</p>
+        <p>Conceived, researched and prototyped three new products addressing demand-supply gaps in the sports ecosystem, validated with UAT, data analytics and market research before build.</p>
       </div>
       <div class="item reveal reveal-d1">
         <h4>Kerala Blasters FC partnership.</h4>
-        <p>Executed integrated marketing campaigns with the ISL franchise — delivering a 40% lift in social impressions and a 500% uplift in engagement through co-branded content and community activation.</p>
+        <p>Executed integrated marketing campaigns with the ISL franchise, delivering a 40% lift in social impressions and a 500% uplift in engagement through co-branded content and community activation.</p>
       </div>
       <div class="item reveal reveal-d2">
         <h4>Hack for Sport.</h4>
-        <p>Project Manager for India's first Sports Ecosystem and Gaming Hackathon — and a Campus Ambassador Program with 100 ambassadors driving 10,000+ monthly student outreach.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============== CAREER ============== -->
-<section class="career" id="career">
-  <div class="container">
-    <div class="head">
-      <div class="kicker reveal">Timeline</div>
-      <h2 class="reveal reveal-d1">All three roles,<br/>side by side.</h2>
-    </div>
-    <div class="roles">
-      <div class="role reveal">
-        <div class="when">Oct 2024 — Now</div>
-        <div>
-          <div class="wordmark indriya">Indriya</div>
-          <h4>Senior Manager, Digital Customer Experience</h4>
-          <div class="place">Aditya Birla Jewellery — Mumbai</div>
-          <p>Owns the digital CX and in-store technology charter for a new luxury jewellery retail brand. Product strategy for Sparkle, billing transformation, AI-powered analytics, and enterprise AI adoption (NotebookLM, Gemini) across 80 stores. Drove digital adoption across 900+ consultants — reducing training time by 40%, support queries by 35%, and boosting tool engagement by 22% within 3 months.</p>
-        </div>
-      </div>
-      <div class="role reveal">
-        <div class="when">Jun 2022 — Sep 2024</div>
-        <div>
-          <div class="wordmark nestle">Nestl<span class="acc">é</span></div>
-          <h4>Business Analyst, Digital Transformation</h4>
-          <div class="place">South Asia — Gurgaon</div>
-          <p>Operated as Product Manager for flagship digital platforms across South Asia — consumer apps, D2C commerce, and 1P data infrastructure. Shipped AskNestle redesign, Nestlé Global's first vernacular AI translation, the Smart Data Hub, Buynow shoppable tech, and a retail audit SaaS that contributed to a Zero-Observation NIA Audit.</p>
-        </div>
-      </div>
-      <div class="role reveal">
-        <div class="when">Mar 2020 — Jun 2022</div>
-        <div>
-          <div class="wordmark sporjo">sporjo</div>
-          <h4>Senior Associate, Brand · Marketing · Product</h4>
-          <div class="place">Sports-tech venture — Mumbai</div>
-          <p>Early-stage sports-tech venture. Owned product ideation, growth, and strategic partnerships during the platform's zero-to-one phase. Conceived and prototyped 3 new products, drove a 4× lift in monthly organic leads, launched a Campus Ambassador Program across 75 colleges, and ran integrated campaigns with Kerala Blasters FC delivering a 500% uplift in social engagement.</p>
-        </div>
+        <p>Project Manager for India's first Sports Ecosystem and Gaming Hackathon, and a Campus Ambassador Program with 100 ambassadors driving 10,000+ monthly student outreach.</p>
       </div>
     </div>
   </div>
@@ -1868,7 +1949,7 @@
     <div class="head">
       <div class="kicker reveal">Partners &amp; Teams</div>
       <h2 class="reveal reveal-d1">Built with the<br/>best in the room.</h2>
-      <p class="sub reveal reveal-d2">Years of vendor partnerships and cross-timezone team leadership — from Mumbai to Kuala Lumpur — shipping to a single rhythm.</p>
+      <p class="sub reveal reveal-d2">Years of vendor partnerships and cross-timezone team leadership, from Mumbai to Kuala Lumpur, shipping to a single rhythm.</p>
     </div>
 
     <div class="partner-grid reveal">
@@ -1883,22 +1964,22 @@
     <div class="timezones">
       <div class="copy reveal">
         <h3>Cross-timezone delivery,<br/>without the friction.</h3>
-        <p>Led distributed teams across India, Southeast Asia and beyond — coordinating product sprints, design reviews and launches across multiple time zones. Vendor-managed and in-house, in equal measure.</p>
+        <p>Led distributed teams across India, Southeast Asia and beyond, coordinating product sprints, design reviews and launches across multiple time zones. Vendor-managed and in-house, in equal measure.</p>
       </div>
       <div class="clocks reveal reveal-d1" id="clocks">
         <div class="clock">
           <div class="city">Mumbai</div>
-          <div class="time" data-tz="Asia/Kolkata">—</div>
+          <div class="time" data-tz="Asia/Kolkata">. </div>
           <div class="zone">IST</div>
         </div>
         <div class="clock">
           <div class="city">Kuala Lumpur</div>
-          <div class="time" data-tz="Asia/Kuala_Lumpur">—</div>
+          <div class="time" data-tz="Asia/Kuala_Lumpur">. </div>
           <div class="zone">MYT</div>
         </div>
         <div class="clock">
           <div class="city">Singapore</div>
-          <div class="time" data-tz="Asia/Singapore">—</div>
+          <div class="time" data-tz="Asia/Singapore">. </div>
           <div class="zone">SGT</div>
         </div>
       </div>
@@ -1921,7 +2002,7 @@
       </div>
       <div class="award-card reveal reveal-d1">
         <div class="yr">2025</div>
-        <h4>Best Retail App — Sparkle</h4>
+        <h4>Best Retail App. Sparkle</h4>
         <p>9th Retail &amp; eCommerce Awards</p>
       </div>
       <div class="award-card reveal reveal-d2">
@@ -1998,7 +2079,7 @@
     <div class="kicker reveal">Get in touch</div>
     <h2 class="reveal reveal-d1">Let's build<br/>something good.</h2>
     <p class="reveal reveal-d2">
-      Currently open to senior product and CX leadership conversations — based in Mumbai, open to relocation anywhere in the world. The fastest way to reach me is email.
+      Currently open to senior product and CX leadership conversations, based in Mumbai, open to relocation anywhere in the world. The fastest way to reach me is email.
     </p>
     <div class="cta-row reveal reveal-d3">
       <a class="btn btn-primary" href="mailto:neha.bhatnagar2411@gmail.com">Email me</a>
@@ -2079,22 +2160,22 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  // Live timezone clocks
+  // Live timezone clocks (updates every second)
   function updateClocks(){
     const els = document.querySelectorAll('#clocks .time');
-    const opts = { hour: '2-digit', minute: '2-digit', hour12: false };
+    const opts = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
     els.forEach(el => {
       const tz = el.dataset.tz;
       try{
         const now = new Date().toLocaleTimeString('en-GB', { ...opts, timeZone: tz });
         el.textContent = now;
       } catch(e){
-        el.textContent = '—';
+        el.textContent = '--:--:--';
       }
     });
   }
   updateClocks();
-  setInterval(updateClocks, 30000);
+  setInterval(updateClocks, 1000);
 </script>
 </body>
 </html>
